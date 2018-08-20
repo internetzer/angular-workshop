@@ -12,27 +12,18 @@
 
       <div class="col-md-12">
 
-        <div class="card mb-4">
-          <div class="card-body">
-            <h3 class="card-title">Basket</h3>
+        <div class="card md-4">
 
-            <h6 class="card-subtitle mb-2 text-muted">List of selected
-              flights</h6>
+          <app-flight-basket [selectedFlightIds]="selectedFlightIds">
+              <h3 class="card-title">Basket</h3>
 
-            <ul class="todo-list mt-2">
-              <li class="todo-list-item">
-                Flights:
-                <pre>{{selectedFlightIds | json}}</pre>
-              </li>
-            </ul>
-
-            <div class="card-footer todo-list-footer">
-              <button class="btn btn-danger btn-md" id="btn-todo">
-                <em class="fa fa-2x fa-trash"></em>
-              </button>
-            </div>
-          </div>
+              <button class="btn btn-danger btn-md" id="btn-todo" (click)="resetBasket()">
+                  <em class="fa fa-2x fa-trash"></em>
+                </button>
+          </app-flight-basket>
+          
         </div>
+
       </div>
 
       <div class="col-md-12">
@@ -46,18 +37,18 @@
             <div class="form-group row">
               <label for="from" class="col-2 col-form-label">From:</label>
               <div class="col-10">
-                <input id="from" class="form-control" type="text">
+                <input id="from" class="form-control" type="text" [ngModel]="from" (ngModelChange)="from = $event">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="to" class="col-2 col-form-label">To:</label>
               <div class="col-10">
-                <input id="to" class="form-control" type="text">
+                <input id="to" class="form-control" type="text" [(ngModel)]="to">
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline-secondary">
+            <button type="button" class="btn btn-outline-secondary" (click)="searchFlights(from, to)">
               Search
             </button>
           </div>
@@ -77,33 +68,8 @@
               </button>
             </div>
 
-            <div class="table-responsive">
-              <table class="table table-striped">
-                <thead>
-                <tr>
-                  <th>Id #</th>
+            <app-flight-card *ngFor="let flight of flights" [flight]="flight" [selected]="selectedFlightIds[flight.id]" (selectedChange)="selectFlight($event)"></app-flight-card>
 
-                  <th>From</th>
-
-                  <th>To</th>
-
-                  <th>Date</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr>
-                  <td>id</td>
-
-                  <td>from</td>
-
-                  <td>to</td>
-
-                  <td>date</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </div>
 

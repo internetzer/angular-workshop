@@ -8,8 +8,12 @@ import {FlightResource} from '../../core/api/resources/flight.resource';
 })
 export class FlightSearchComponent {
 
+  from: string;
+  to: string;
+
   selectedFlightIds: { [key: string]: boolean } = {};
   flights: Flight[] = [];
+
 
   fr: FlightResource;
 
@@ -31,4 +35,7 @@ export class FlightSearchComponent {
     this.selectedFlightIds[id] = !this.selectedFlightIds[id];
   }
 
+  resetBasket() {
+    this.selectedFlightIds = {};
+  }
 }

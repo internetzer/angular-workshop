@@ -105,6 +105,14 @@ p {
   font-size: .9rem;
 }
 
+.flight-selected {
+  background-color: red;
+}
+
+.flight-unselected {
+  background-color: green;
+}
+
 .card {
   border-radius: 0px;
 }

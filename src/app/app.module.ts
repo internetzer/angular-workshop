@@ -7,6 +7,8 @@ import {CoreModule} from './core/core.module';
 import {FlightSearchComponent} from './pages/flight-search/flight-search.component';
 import {HomeComponent} from './pages/home/home.component';
 import {SharedModule} from './shared/shared.module';
+import { FlightCardComponent } from './pages/flight-search/flight-card/flight-card.component';
+import { FlightBasketComponent } from './pages/flight-search/flight-basket/flight-basket.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import {SharedModule} from './shared/shared.module';
     // Pipes
     AppComponent,
     HomeComponent,
-    FlightSearchComponent
+    FlightSearchComponent,
+    FlightCardComponent,
+    FlightBasketComponent
   ],
   exports: [
     // Modules
